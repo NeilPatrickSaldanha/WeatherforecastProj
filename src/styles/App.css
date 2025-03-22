@@ -2,7 +2,7 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 20px;
   background: rgba(25, 43, 65, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* For Safari */
@@ -13,7 +13,8 @@
   gap: 25px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible */
+  min-height: 100vh; /* Ensure full height coverage */
 }
 
 .app-container::before {
@@ -131,8 +132,12 @@
 
 @media (max-width: 768px) {
   .app-container {
-    padding: 20px;
+    padding: 15px;
     border-radius: 15px;
+    height: auto;
+    min-height: auto;
+    margin: 10px;
+    width: calc(100% - 20px);
   }
   
   .app-title {
@@ -141,12 +146,24 @@
 }
 
 @media (max-width: 480px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+    min-height: 100vh;
+    padding: 0;
+  }
+
   .app-container {
     padding: 15px;
     border-radius: 12px;
-    width: 100%;
+    width: calc(100% - 16px);
     max-width: 100%;
     gap: 15px;
+    margin: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    min-height: auto;
+    height: auto;
+    overflow-y: visible;
   }
   
   .app-title {

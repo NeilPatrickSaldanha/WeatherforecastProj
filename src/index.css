@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,19 +19,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #1c2a3d, #223a50, #1f364d);
   color: #f5f5f5;
-  min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,18 +49,40 @@ code {
     monospace;
 }
 
+#root {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding: 5px;
+    align-items: flex-start;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  #root {
+    height: auto;
+    min-height: 100vh;
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding: 8px;
-    height: 100vh;
-    /* Use a fixed background on very small screens to prevent stretching */
+    padding: 0;
+    height: auto;
+    overflow-y: auto;
     background-attachment: fixed;
+  }
+  
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }
 
