@@ -1,50 +1,60 @@
 .forecast-container {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+.forecast-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff; /* Changed to white for better visibility */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for contrast */
+}
+
+.forecast-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+@media (max-width: 900px) {
+  .forecast-days {
+    grid-template-columns: repeat(5, minmax(140px, 1fr));
   }
-  
+}
+
+@media (max-width: 768px) {
   .forecast-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #ffffff; /* Changed to white for better visibility */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Added shadow for contrast */
+    font-size: 1.3rem;
+    margin-bottom: 12px;
   }
   
   .forecast-days {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .forecast-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  .forecast-days {
+    display: flex;
     overflow-x: auto;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    margin: 0 -5px; /* Negative margin to allow items to go to the edge */
+    padding: 0 5px 15px;
   }
   
-  @media (max-width: 900px) {
-    .forecast-days {
-      grid-template-columns: repeat(5, minmax(140px, 1fr));
-    }
+  .forecast-days > * {
+    flex: 0 0 120px;
+    scroll-snap-align: start;
   }
-  
-  @media (max-width: 768px) {
-    .forecast-title {
-      font-size: 1.3rem;
-    }
-    
-    .forecast-days {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .forecast-days {
-      display: flex;
-      overflow-x: auto;
-      padding-bottom: 15px;
-      scroll-snap-type: x mandatory;
-    }
-    
-    .forecast-days > * {
-      flex: 0 0 140px;
-      scroll-snap-align: start;
-    }
-  }
+}

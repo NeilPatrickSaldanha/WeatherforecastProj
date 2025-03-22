@@ -1,119 +1,170 @@
 .forecast-day {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    min-width: 0;
-  }
-  
-  .forecast-day:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .forecast-day-header {
-    text-align: center;
-    margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  min-width: 0;
+}
+
+.forecast-day:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.forecast-day-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.forecast-date {
+  font-size: 0.8rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.forecast-day-icon {
+  margin: 10px 0;
+}
+
+.forecast-temperatures {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.temp-max {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.temp-divider {
+  margin: 0 5px;
+  opacity: 0.7;
+}
+
+.temp-min {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.forecast-condition {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 5px 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.forecast-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.forecast-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+}
+
+.forecast-detail-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+@media (max-width: 768px) {
+  .forecast-day {
+    padding: 12px;
   }
   
   .forecast-day-name {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .forecast-date {
-    font-size: 0.8rem;
-    margin: 0;
-    opacity: 0.9;
-  }
-  
-  .forecast-day-icon {
-    margin: 10px 0;
-  }
-  
-  .forecast-temperatures {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
+    font-size: 1rem;
   }
   
   .temp-max {
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-  
-  .temp-divider {
-    margin: 0 5px;
-    opacity: 0.7;
+    font-size: 1.1rem;
   }
   
   .temp-min {
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 0.9rem;
   }
   
   .forecast-condition {
-    text-align: center;
-    font-size: 0.9rem;
-    margin: 5px 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
-  }
-  
-  .forecast-details {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 8px;
-    margin-top: 5px;
+    font-size: 0.8rem;
   }
   
   .forecast-detail-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .forecast-day {
+    padding: 10px;
+    /* Use transform scale instead of Y translation for smoother mobile experience */
+    transition: all 0.2s ease;
+  }
+  
+  .forecast-day:hover, .forecast-day:active {
+    transform: scale(1.02);
+  }
+  
+  .forecast-day-name {
+    font-size: 0.9rem;
+  }
+  
+  .forecast-date {
+    font-size: 0.7rem;
+  }
+  
+  .forecast-day-icon {
+    margin: 6px 0;
+  }
+  
+  .temp-max {
+    font-size: 1rem;
+  }
+  
+  .temp-min {
+    font-size: 0.8rem;
+  }
+  
+  .forecast-condition {
+    font-size: 0.75rem;
+    margin: 3px 0 8px;
+  }
+  
+  .forecast-details {
+    gap: 6px;
+  }
+  
+  .forecast-detail-item {
+    font-size: 0.75rem;
   }
   
   .forecast-detail-icon {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
+    width: 14px;
+    height: 14px;
   }
-  
-  @media (max-width: 768px) {
-    .forecast-day {
-      padding: 12px;
-    }
-    
-    .forecast-day-name {
-      font-size: 1rem;
-    }
-    
-    .temp-max {
-      font-size: 1.1rem;
-    }
-    
-    .temp-min {
-      font-size: 0.9rem;
-    }
-    
-    .forecast-condition {
-      font-size: 0.8rem;
-    }
-    
-    .forecast-detail-item {
-      font-size: 0.8rem;
-    }
-  }
+}

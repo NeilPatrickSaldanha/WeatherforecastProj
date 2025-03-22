@@ -1,135 +1,145 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #1c2a3d, #223a50, #1f364d);
+  color: #f5f5f5;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 40%, rgba(36, 123, 160, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(126, 87, 194, 0.3) 0%, transparent 40%);
+  z-index: -1;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media (max-width: 768px) {
   body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(135deg, #1c2a3d, #223a50, #1f364d);
-    color: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-    overflow-x: hidden;
+    padding: 10px;
   }
-  
-  body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 20% 40%, rgba(36, 123, 160, 0.3) 0%, transparent 40%),
-      radial-gradient(circle at 80% 20%, rgba(126, 87, 194, 0.3) 0%, transparent 40%);
-    z-index: -1;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+    height: 100vh;
+    /* Use a fixed background on very small screens to prevent stretching */
+    background-attachment: fixed;
   }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+}
+
+/* Weather Animations */
+.animate-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.animate-snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Raindrop styling */
+.raindrop {
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+  border-radius: 0 0 5px 5px;
+  animation: falling-rain linear infinite;
+}
+
+/* Snowflake styling */
+.snowflake {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: falling-snow linear infinite;
+}
+
+@keyframes falling-rain {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
   }
-  
-  @media (max-width: 768px) {
-    body {
-      padding: 10px;
-    }
+  50% {
+    opacity: 1;
   }
-  
-  /* Weather Animations */
-  .animate-rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
+  100% {
+    transform: translateY(calc(100vh + 100px));
+    opacity: 0.3;
   }
-  
-  .animate-snow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
+}
+
+@keyframes falling-snow {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
   }
-  
-  /* Raindrop styling */
-  .raindrop {
-    position: absolute;
-    width: 2px;
-    height: 15px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
-    border-radius: 0 0 5px 5px;
-    animation: falling-rain linear infinite;
-  }
-  
-  /* Snowflake styling */
-  .snowflake {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
+  50% {
     opacity: 0.8;
-    animation: falling-snow linear infinite;
   }
-  
-  @keyframes falling-rain {
-    0% {
-      transform: translateY(-100px);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(calc(100vh + 100px));
-      opacity: 0.3;
-    }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0.3;
   }
-  
-  @keyframes falling-snow {
-    0% {
-      transform: translateY(-100px) rotate(0deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateY(calc(100vh + 100px)) rotate(360deg);
-      opacity: 0.3;
-    }
-  }
-  
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
-  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}

@@ -1,145 +1,182 @@
 .search-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  padding: 16px 50px 16px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50px;
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+  border-color: rgba(101, 179, 244, 0.7);
+  box-shadow: 0 0 15px rgba(101, 179, 244, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-button {
+  position: absolute;
+  right: 8px;
+  border: none;
+  background: linear-gradient(135deg, #64b3f4, #5a85e6);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5a9fe0, #4a75d6);
+}
+
+/* Suggestions styling */
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(30, 50, 75, 0.95);
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .search-input-group {
-    display: flex;
-    align-items: center;
-    position: relative;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+.suggestion-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 15px 15px;
+}
+
+.suggestion-item:hover {
+  background: rgba(101, 179, 244, 0.2);
+}
+
+.suggestion-item.active {
+  background: rgba(101, 179, 244, 0.3);
+}
+
+.suggestion-icon {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.suggestion-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-name {
+  font-weight: 500;
+}
+
+.suggestion-country {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
   .search-input {
-    flex: 1;
-    padding: 16px 50px 16px 20px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 50px;
-    font-size: 1.05rem;
-    outline: none;
-    transition: all 0.3s ease;
-    width: 100%;
-    font-family: inherit;
-    color: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-  }
-  
-  .search-input:focus {
-    border-color: rgba(101, 179, 244, 0.7);
-    box-shadow: 0 0 15px rgba(101, 179, 244, 0.4);
-    background: rgba(255, 255, 255, 0.1);
+    padding: 14px 45px 14px 15px;
+    font-size: 0.95rem;
   }
   
   .search-button {
-    position: absolute;
-    right: 8px;
-    border: none;
-    background: linear-gradient(135deg, #64b3f4, #5a85e6);
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .search-button:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #5a9fe0, #4a75d6);
-  }
-  
-  /* Suggestions styling */
-  .search-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(30, 50, 75, 0.95);
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    margin-top: 5px;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: fadeIn 0.2s ease-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    padding: 8px;
   }
   
   .suggestion-item {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    padding: 12px 40px 12px 15px;
+    font-size: 0.9rem;
+    border-radius: 25px;
   }
   
-  .suggestion-item:last-child {
-    border-bottom: none;
-    border-radius: 0 0 15px 15px;
+  .search-button {
+    padding: 7px;
+    right: 5px;
   }
   
-  .suggestion-item:hover {
-    background: rgba(101, 179, 244, 0.2);
+  .search-suggestions {
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
   }
   
-  .suggestion-item.active {
-    background: rgba(101, 179, 244, 0.3);
-  }
-  
-  .suggestion-icon {
-    margin-right: 10px;
-    width: 16px;
-    height: 16px;
-    opacity: 0.7;
-  }
-  
-  .suggestion-text {
-    display: flex;
-    flex-direction: column;
+  .suggestion-item {
+    padding: 10px 12px;
   }
   
   .suggestion-name {
-    font-weight: 500;
+    font-size: 0.9rem;
   }
   
   .suggestion-country {
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.7rem;
   }
   
-  @media (max-width: 768px) {
-    .search-input {
-      padding: 14px 45px 14px 15px;
-      font-size: 0.95rem;
-    }
-    
-    .search-button {
-      padding: 8px;
-    }
-    
-    .suggestion-item {
-      padding: 10px 15px;
-    }
+  .suggestion-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
   }
+}
